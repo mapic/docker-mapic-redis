@@ -1,0 +1,9 @@
+language: generic
+services:
+  - docker
+install:
+  - docker build -t mapic/redis .
+  - docker run -d --name redis mapic/redis
+script:
+  - docker ps | grep -q redis
+  
