@@ -1,4 +1,5 @@
 FROM redis:latest
 MAINTAINER knutole@mapic.io
 
-# nothing to see here
+ADD ./docker-entrypoint.sh /tmp
+CMD [ "bash /tmp/docker-entrypoint.sh"]

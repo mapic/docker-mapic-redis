@@ -2,7 +2,7 @@ language: generic
 services:
   - docker
 install:
-  - docker build -t mapic/redis .
+  - docker build -t mapic/redis:latest .
   - docker run -d --name redis mapic/redis
 script:
   - docker ps 

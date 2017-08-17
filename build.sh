@@ -1,2 +1,2 @@
 #!/bin/bash
-docker build -it mapic/redis .
+docker build -t mapic/redis:latest .
