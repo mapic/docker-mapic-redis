@@ -26,8 +26,10 @@ cd /tmp && touch redis.conf
 echo "daemonize $MAPIC_REDIS_DAEMONIZE" >> redis.conf
 echo "port $MAPIC_REDIS_PORT" >> redis.conf
 echo "timeout 0" >> redis.conf
-echo "tcp-keepalive 0" >> redis.conf
+# echo "tcp-keepalive 0" >> redis.conf
+echo "tcp-keepalive 300" >> redis.conf
 echo "loglevel $MAPIC_REDIS_LOGLEVEL" >> redis.conf
+# echo "loglevel verbose" >> redis.conf
 echo "databases 16" >> redis.conf
 echo "dbfilename redis.rdb" >> redis.conf
 echo "dir $MAPIC_REDIS_DIR" >> redis.conf
@@ -35,8 +37,15 @@ echo "maxmemory 23592960000" >> redis.conf
 echo "appendonly $MAPIC_REDIS_APPENDONLY" >> redis.conf
 echo "appendfsync $MAPIC_REDIS_APPENDFSYNC" >> redis.conf
 echo "requirepass $MAPIC_REDIS_AUTH" >> redis.conf
+echo "always-show-logo yes" >> redis.conf
 
+# display config for debug
 ls -la redis.conf
 cat redis.conf
 
+# set recommended redis setting
+sudo sysctl vm.overcommit_memory=1
+sudo echo never > /sys/kernel/mm/transparent_hugepage/enabled
+
+# start redis
 redis-server redis.conf
