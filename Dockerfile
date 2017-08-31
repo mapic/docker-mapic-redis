@@ -1,5 +1,4 @@
-# FROM redis:latest
-FROM redis:alpine
+FROM redis:latest
 MAINTAINER knutole@mapic.io
 
 ADD ./mapic-entrypoint.sh /tmp/mapic-entrypoint.sh

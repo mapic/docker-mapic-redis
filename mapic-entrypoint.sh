@@ -43,9 +43,5 @@ echo "always-show-logo yes" >> redis.conf
 ls -la redis.conf
 cat redis.conf
 
-# set recommended redis setting
-sudo sysctl vm.overcommit_memory=1
-sudo echo never > /sys/kernel/mm/transparent_hugepage/enabled
-
 # start redis
 redis-server redis.conf
